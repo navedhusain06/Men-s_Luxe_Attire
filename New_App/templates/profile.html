@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block start %}
+
+
+            <h1>Home Page</h1>
+            
+{% comment %} {% for user_objs in user_obj %}
+<p class='text-black'>{{user_objs.username}}</p>
+            <p class='text-black'>{{user_objs.firstname}}</p>
+        <p class='text-black'>{{user_obj.lastname}}</p>
+        
+{% endfor %} {% endcomment %}
+
+<p class='text-black'>Username: {{ user_obj.username }}</p>
+<p class='text-black'>First Name: {{ user_obj.first_name }}</p>
+<p class='text-black'>Last Name: {{ user_obj.last_name }}</p>
+
+
+{% endblock %}

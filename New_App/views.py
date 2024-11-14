@@ -15,9 +15,10 @@ def ShopFun(request):
     shop_obj = Products.objects.all()
     return render(request, 'shop.html', {'shop_obj':shop_obj})
 
-@login_required
+# @login_required
 def homeFun(request):
-    messages.success(request, 'You have Successfully Logged in')
+
+    # messages.success(request, 'You have Successfully Logged in')
     return render(request, 'home.html')
 
 def loginFun(request):
@@ -195,3 +196,19 @@ def view_cart(request):
     cart = request.session.get('cart', {})
     total_price = sum(item['price'] * item['quantity'] for item in cart.values())
     return render(request, 'cart.html', {'cart': cart, 'total_price': total_price})
+
+
+def logoutFun(request):
+    if request.method == 'POST':
+        logout(request)
+        return redirect('login')
+    return render(request, 'logout.html')
+
+def profile(request):
+    user_obj = request.user  
+    return render(request, 'profile.html', {'user_obj':user_obj})
+
+def product_detail(request, product_id):
+    product = get_object_or_404(Products, id=product_id)
+    size_obj = Size.objects.all()
+    return render(request, 'product-detail.html', {'product': product})

@@ -24,8 +24,15 @@ Men's Luxe Attire |
         <li><a href="#fashion">FASHION</a></li>
         <li><a href="#favourite">FAVOURITE</a></li>
         <li><a href="#lifestyle">LIFESTYLE</a></li>
+        <li><a href="{% url "profile" %}">Profile</a></li>
         <li>
-          <button class="btn">SIGN UP</button>
+          {% if user.is_authenticated %}
+
+
+          <a href='{% url "logout" %}' class="btn text-white" >Log Out</a>
+          {% else %}
+          <a href="{% url "register" %}" class="btn text-white">SIGN UP</a>
+          {% endif %}
         </li>
       </ul>
     </nav>
@@ -43,7 +50,12 @@ Men's Luxe Attire |
           </h1>
           <p>Live for influential and innovative fashion!</p>
           <div class="header__btns">
+            {% if user.is_authenticated %}
             <a href='{% url "shop" %}' class="btn">Shop Now</a>
+            {% else %}
+            <a href='{% url "login" %}' class="btn">Shop Now</a>
+
+            {% endif %}
           </div>
         </div>
         <div class="header__image">

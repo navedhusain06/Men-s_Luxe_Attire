@@ -1,19 +1,21 @@
 {% extends "base.html" %}
 
 {% block start %}
+
 <a href='{% url "view_cart" %}' class='h-14 w-full bg-slate-600 flex justify-end text-2xl pr-44 text-white py-3'>
 <i class="fa-solid fa-cart-shopping"></i>
 </a>
-<div class='grid grid-cols-3 mx-16'>
+<div class='grid grid-cols-3 mx-16'>    
 {% for shop_objs in shop_obj %}
 <div class="">
     <div class="">
         <div class="relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border  w-96">
             <div class="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white bg-clip-border rounded-xl h-96">
-                <img
-                    src="{{shop_objs.image.url}}"
-                    alt="card-image" class="object-cover w-full h-full" />
+                <a href="{% url 'product_detail' shop_objs.id %}">
+                    <img src="{{ shop_objs.image.url }}" alt="card-image" class="object-cover w-full h-full" />
+                </a>
             </div>
+            
             <div class="p-6">
                 <div class="flex items-center justify-between mb-2">
                     <p class="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900">

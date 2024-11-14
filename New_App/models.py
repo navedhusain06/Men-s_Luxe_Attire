@@ -21,6 +21,17 @@ class Products(models.Model):
     def __str__(self):
         return self.name
     
+class Size(models.Model):
+    product = models.ForeignKey(Products, on_delete=models.CASCADE)
+    size = models.CharField(max_length=50, choices=(
+                                                    ('S', 'S'),
+                                                    ('M', 'M'),
+                                                    ('L', 'L'),
+                                                    ('XL', 'XL'),
+                                                    ('XXL', 'XXL')))
     
+    
+    def __str__(self):
+        return self.size
     
     

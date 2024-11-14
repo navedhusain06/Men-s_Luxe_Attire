@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block start %}
+
+<!-- logout.html -->
+<p>Do you want to log out?</p>
+<form method="POST">
+    {% csrf_token %}
+    <button type='submit' class='p-2 text-white bg-red-500'>Yes</button>
+</form>
+<a href="{% url 'home' %}" class='p-2 text-white bg-green-500'>No</a>
+
+
+{% endblock %}
